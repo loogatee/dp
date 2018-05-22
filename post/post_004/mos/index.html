@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><style>
+body {
+	display: block;
+	--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		background-image: var(--bgImage) !important;
+	
+}
+
+body, body.pushable {
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover !important;
+}
+
+</style><title>
+Mongoose OS on ESPer
+</title><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="John Reed" />
+	<meta name="description" content="Recently I&amp;rsquo;ve got my hands on the craved-for IoT ESP32, thanks to DFRobot, and have been tinkering with it ever since. I&amp;rsquo;m really amazed by it since it packs both Bluetooth and WiFi in a small yet powerful unit. Since I received the MCU rather than the module, so, to use it, I made myself a breakout board named ESPer(because, why not? 😄). Feel free to check out its Instructions over here." />
+<meta name="generator" content="Hugo 0.40.3" />
+
+<link rel="shortcut icon" href="img/defaultFav.ico">
+
+<link rel="canonical" href="/post/post_004/mos/" />
+<link rel="alternative" href="/index.xml" title="JohnnyReedProjects" type="application/atom+xml"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<style>
+body.pushable {
+	display: block;
+		background-image: var(--bgImage) !important;
+	 ;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/css/site.css">
+<script>
+	var colorBG = ""
+	var enabledPost = true
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+</head>
+
+<body><script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+		var bgImage = "url(" + "" + ")"
+	
+	console.log("Current background: " + bgImage.substring(bgImage.indexOf("bg"), bgImage.length));
+	document.body.style.setProperty('--blurEff',"");
+	document.body.style.setProperty('--bgImage', bgImage);
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min)
+	  max = Math.floor(max)
+	  var random
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random
+	      break
+	    }
+	  }
+	  return random
+	}
+
+	function connect(arr) {
+	  var str = ''
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', '
+	    } else {
+	      str += arr[i]
+	    }
+	  }
+	  return str
+	}
+</script><div class="blur-overlay"></div><div id="sidebar" class="ui sidebar inverted vertical menu">
+	<section id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/img/jr.jpg">
+</div>
+<h3 class="ui header">John Reed
+	<div class="sub header">Computer guy, Golfer dude</div>
+</h3>
+</section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/tags/development/index.html" title="development">development</a>
+
+<a class="ui label" href="/tags/django/index.html" title="django">django</a>
+
+<a class="ui label" href="/tags/esp32/index.html" title="esp32">esp32</a>
+
+<a class="ui label" href="/tags/go/index.html" title="go">go</a>
+
+<a class="ui label" href="/tags/golang/index.html" title="golang">golang</a>
+
+<a class="ui label" href="/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
+
+<a class="ui label" href="/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/tags/templates/index.html" title="templates">templates</a>
+
+<a class="ui label" href="/tags/themes/index.html" title="themes">themes</a>
+
+</section>	
+	
+	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/development/index.html">development</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/post_002/proj1/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj1</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/post_001/proj_readyforpic/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj_Ready_For_Pic</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/golang/index.html">golang</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/programming/index.html">programming</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/post_003/netjsonconfig/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Testing &#34;django-netjsonconfig&#34;</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+	</section>
+	
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+<p>© 2018 JohnnyReedProjects</p>
+    
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></section>
+</div>
+<div class="pusher">
+		<div class="flipper">
+			<div class="front">
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div><div class="item">
+		<a href="/index.html">
+			<i class="inverted big link home icon" title="Home"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/post/index.html">
+			<i class="inverted big link archive icon" title="Archive"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/tags/index.html">
+			<i class="inverted big link tags icon" title="All Tags"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/categories/index.html">
+			<i class="inverted big link cubes icon" title="All Categories"></i>
+		</a>
+    </div>
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
+	</div>
+	
+</nav>
+
+
+<div class="ui centered grid">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">
+		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/img/jr.jpg">
+</div>
+<h3 class="ui header">John Reed
+	<div class="sub header">Computer guy, Golfer dude</div>
+</h3>
+</header>
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon down"title="Click this to pop tags and categories"></i>		
+			</div></div>
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/tags/development/index.html" title="development">development</a>
+
+<a class="ui label" href="/tags/django/index.html" title="django">django</a>
+
+<a class="ui label" href="/tags/esp32/index.html" title="esp32">esp32</a>
+
+<a class="ui label" href="/tags/go/index.html" title="go">go</a>
+
+<a class="ui label" href="/tags/golang/index.html" title="golang">golang</a>
+
+<a class="ui label" href="/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
+
+<a class="ui label" href="/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/tags/templates/index.html" title="templates">templates</a>
+
+<a class="ui label" href="/tags/themes/index.html" title="themes">themes</a>
+
+</section><section class="ui attached inverted segment dream-categories both flexbox">
+			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/development/index.html">development</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/post_002/proj1/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj1</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/post_001/proj_readyforpic/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj_Ready_For_Pic</p>
+		</div>
+	</a>
+
+	<a class="item" href="/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/golang/index.html">golang</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/categories/programming/index.html">programming</a>
+</div>
+<div class="content">
+
+	<a class="item" href="/post/post_003/netjsonconfig/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Testing &#34;django-netjsonconfig&#34;</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+			</section></div>
+		<footer class="ui bottom attached center aligned inverted segment">
+<p>© 2018 JohnnyReedProjects</p>
+    
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></footer>
+	</div>
+</div></div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				Mongoose OS on ESPer
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Jan 28, 2018</span></div>
+					<div><span><i class="clock outline icon"></i>5 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on Jan 28, 2018</span></div>
+			</div>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#prepping-and-beginning">Prepping and Beginning!</a></li>
+<li><a href="#installing-the-mos-tool">Installing the mos Tool</a></li>
+<li><a href="#wiring-up-esper">Wiring up ESPer</a></li>
+<li><a href="#flashing-the-firmware">Flashing the Firmware</a></li>
+<li><a href="#configuring-the-wifi-settings">Configuring the WiFi Settings</a></li>
+<li><a href="#the-sky-s-the-limit">The Sky&rsquo;s the Limit</a></li>
+</ul>
+</nav></div>
+			
+			
+			<article class="post-content twemoji">
+				
+
+<p><img src="../img/cover_esp32Mongoose.jpg" alt="Intro" /></p>
+
+<p>Recently I&rsquo;ve got my hands on the craved-for IoT <strong>ESP32</strong>, thanks to
+<strong><a href="https://www.dfrobot.com">DFRobot</a></strong>, and have been tinkering with it ever since.
+I&rsquo;m really amazed by it since it packs both <strong>Bluetooth</strong> and <strong>WiFi</strong> in a small yet
+powerful unit. Since I received the <strong>MCU</strong> rather than the module, so, to use it, I
+made myself a breakout board named <strong>ESPer</strong>(because, why not? 😄). Feel free to
+check out its Instructions over
+<a href="https://www.instructables.com/id/DIY-ESP32-Development-Board-ESPer/">here</a>.</p>
+
+<p>So, coming back on track, this post is dedicated on how to use it efficiently via
+<strong>Mongoose OS</strong>, which in my opinion, is a great firmware to start with for ESP32
+beginners, such as me. It provides a good interface for creating, modifying
+and uploading code. I think it&rsquo;s biggest feature is that it allows code
+modification <strong>over the air</strong>(OTA) so that you don&rsquo;t have to flash your device
+for every small modification.</p>
+
+<p>Speaking of code, it also supports a variety of languages, including
+<strong>C++</strong>, <strong>JavaScript</strong> and guess what, <strong>Wiring(Arduino)</strong>. I think that&rsquo;s
+enough of decribing what Mongoose OS is.</p>
+
+<p>If you&rsquo;re more curious about Mongoose OS, check out it&rsquo;s official site:
+<a href="https://www.mongoose-os.com">Mongoose OS</a>.</p>
+
+<hr />
+
+<h1 id="prepping-and-beginning">Prepping and Beginning!&nbsp;<a class="anchor" href="#prepping-and-beginning"><i class="small linkify icon"></i></a> </h1>
+
+<p>To flash your <strong>ESPer</strong> with <strong>Mongoose OS</strong>, you&rsquo;re supposed to have the following
+things at bay:</p>
+
+<ul>
+<li>ESPer or ESP32 MCU.</li>
+</ul>
+
+<blockquote>
+<p>This method will also work if your ESP32 is wired according to the ESPer schematic
+<a href="https://cdn.instructables.com/FOU/1WS0/JBE12R70/FOU1WS0JBE12R70.LARGE.jpg">here</a>.
+The
+<a href="https://www.dfrobot.com/product-1559.html">ESP32</a> chip I used!</p>
+</blockquote>
+
+<ul>
+<li>Arduino(any model) or a USB to TTL Converter</li>
+<li>5 - Jumper Wires</li>
+<li>2 - Breadboards (since ESPer doesn&rsquo;t fit on one)</li>
+</ul>
+
+<p>That&rsquo;s all for the requirements. Once you&rsquo;re sure you&rsquo;ve got all the stuff, boost ahead!</p>
+
+<hr />
+
+<h1 id="installing-the-mos-tool">Installing the mos Tool&nbsp;<a class="anchor" href="#installing-the-mos-tool"><i class="small linkify icon"></i></a> </h1>
+
+<p><img src="../img/mos.png" alt="mos ui" />
+The Mongoose OS website provides an easy-to-use tool for <strong>flashing</strong> and <strong>managing</strong>
+Mongoose OS on devices. This tool also aids in uploading code and in numerous other tasks.</p>
+
+<p>The installation instructions have been documented on the official website
+<a href="https://mongoose-os.com/software.html">here</a>.
+Since I&rsquo;m using Lubuntu myself, I had to use the following commands:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:mongoose-os/mos
+sudo apt-get update
+sudo apt-get install mos</code></pre></td></tr></table>
+</div>
+</div>
+<hr />
+
+<h1 id="wiring-up-esper">Wiring up ESPer&nbsp;<a class="anchor" href="#wiring-up-esper"><i class="small linkify icon"></i></a> </h1>
+
+<p><img src="../img/wiring.jpg" alt="Wiring Diagram" />
+Once the tool is downloaded, wire up your ESPer with any <strong>USB to TTL Converter</strong>
+since the flashing is to be done via <strong>UART</strong>.</p>
+
+<p>To keep things applicable to a larger reader-base, I&rsquo;ll be proceeding with my good
+&lsquo;ol <strong>Arduino UNO</strong>. It&rsquo;s possible to use an Arduino as a <strong>USB to TTL Converter</strong>
+since it has an in-built <strong>CH340G Converter</strong> which the Arduino uses for programming
+the ATmega IC.
+Now wire up <strong>ESPer</strong> according to the wiring diagram posted above. Once done it should
+look something like this.</p>
+
+<p><img src="../img/wiring-real.jpg" alt="ESPer Wired Up" /></p>
+
+<blockquote>
+<p>Be careful while making the <strong>power connections</strong> because ESP32 MCU is
+<strong>not 5V tolerable</strong> therefore you might end up burning your MCU if you&rsquo;re not careful.</p>
+</blockquote>
+
+<p>Once that&rsquo;s done, connect your Arduino to your PC or any other device.</p>
+
+<hr />
+
+<h1 id="flashing-the-firmware">Flashing the Firmware&nbsp;<a class="anchor" href="#flashing-the-firmware"><i class="small linkify icon"></i></a> </h1>
+
+<p>Now that everything&rsquo;s done, all that&rsquo;s left to do is to flash the firmware onto
+the ESPer board. To do that:</p>
+
+<ul>
+<li>Launch the <strong>mos tool</strong>. In my case, that is Linux, it is opened by entering
+<code>mos</code> in the terminal. This will open up the <strong>mos Web UI</strong> in your web browser.
+<img src="../img/device.png" alt="Device Configuration" /></li>
+<li>In the UI, set the <strong>Arduino Serial Port</strong>, device as <strong>esp32</strong> and an app of
+your choice. Then click on <code>Flash</code>.
+<img src="../img/flash.png" alt="Flashing" /></li>
+<li>After a few moments, the UI will <strong>attempt to connect</strong> to the device. In this
+interval, you&rsquo;ll have to get off from your keyboard to the ESPer board. To connect
+the device to the UI, we&rsquo;ll have to make it enter <strong>Download Mode</strong>. This is done
+by pressing and holding the <strong>Boot</strong> button, and then the <strong>Reset</strong> button. After
+a second, release the <strong>Reset</strong> button first and then the <strong>Boot</strong> button. You&rsquo;ll
+see that the UI will have begun the flashing process by then.</li>
+<li>Once the message <strong>&ldquo;All done&rdquo;</strong> pops up in the console. Close the web browser and
+terminate the <code>mos</code> command by pressing <code>Ctrl+C</code> in the terminal.</li>
+</ul>
+
+<p>This concludes the flashing process.</p>
+
+<hr />
+
+<h1 id="configuring-the-wifi-settings">Configuring the WiFi Settings&nbsp;<a class="anchor" href="#configuring-the-wifi-settings"><i class="small linkify icon"></i></a> </h1>
+
+<p><img src="../img/wifi.png" alt="WiFi" />
+So we have flashed the Mongoose OS firmware in our ESPer board now, but we still
+haven&rsquo;t configured the <strong>WiFi Settings</strong> which is the most important feature of
+IoT devices since they have to be connected to the internet. To configure WiFi:</p>
+
+<ul>
+<li>Press the <strong>Reset</strong> button on the ESPer board. Wait for a minute or so to let
+the MCU boot up.</li>
+<li>Launch the <strong>mos tool</strong> again and select your <strong>Arduino Serial Port</strong>. You&rsquo;ll
+notice that the UI automatically detects that the Mongoose OS firmware is installed
+on the device and asks you to enter the WiFi settings.</li>
+<li>Enter the WiFi settings and that&rsquo;s it.</li>
+</ul>
+
+<hr />
+
+<h1 id="the-sky-s-the-limit">The Sky&rsquo;s the Limit&nbsp;<a class="anchor" href="#the-sky-s-the-limit"><i class="small linkify icon"></i></a> </h1>
+
+<p>Now that you&rsquo;ve installed an OS on your ESPer board or ESP32, you can do almost
+anything with it, be it a <strong>mini Arduino</strong> or a <strong>WiFi server</strong>, you name it.
+So go ahead and start coding and making. The video below shows my ESPer flashed
+with the
+<strong>Blink Code</strong>.
+<div class="youtube container">
+    <iframe class="youtube" type="text/html"
+        src="https://www.youtube.com/embed/wEwncJ5RnA0"
+        allowfullscreen frameborder="0">
+    </iframe>
+</div>
+</p>
+
+<blockquote>
+<p>The video was recorded before this post was published that is why there is no
+silkscreen on the ESPer board.</p>
+</blockquote>
+
+<p>So that&rsquo;s how you install <strong>Mongoose OS</strong> on your <strong>ESPer</strong> board. You may refer
+to the official documentation to get acquainted with the UI and use it effectively
+in your projects. This is the link:
+<a href="https://mongoose-os.com/docs/">Mongoose OS Documentation</a></p>
+
+<p>If you feel that I missed something, please use the <strong>Disqus Comments</strong> below to
+let me know. Same goes for the improvement suggestions.</p>
+
+<p>A huge thanks to <strong><a href="https://www.dfrobot.com">DFRobot</a></strong> for sending me awesome stuff.</p>
+
+<p>Thanks for reading!  😀</p>
+
+<p><strong>Keep Making!</strong></p>
+
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/tags/development/index.html" title="development">development</a>
+
+<a class="ui label" href="/tags/django/index.html" title="django">django</a>
+
+<a class="ui label" href="/tags/esp32/index.html" title="esp32">esp32</a>
+
+<a class="ui label" href="/tags/go/index.html" title="go">go</a>
+
+<a class="ui label" href="/tags/golang/index.html" title="golang">golang</a>
+
+<a class="ui label" href="/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
+
+<a class="ui label" href="/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/tags/templates/index.html" title="templates">templates</a>
+
+<a class="ui label" href="/tags/themes/index.html" title="themes">themes</a>
+
+
+		</section>
+	</div>
+</div>
+
+			</div>
+			<div class="back"><nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div><div class="item">
+	<a href="https://github.com/loogatee" target="_blank">
+		<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+	</a>
+</div>
+<div class="item">
+	<a href="mailto:johnr@loogatee.com">
+		<i id="ico" class="inverted big link mail icon" title="Email"></i>
+	</a>
+</div>
+
+</nav>
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments"><div class="ui inverted segment">
+	<article class="twemoji"><h1>Johnny Reed</h1>
+
+<hr />
+
+<p><br>
+Firmware guy, linux expert, Master of making stuff work</article>
+</div></section>
+	</div>
+</div></div>
+		</div>
+	</div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/site.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
+
+</body>
+
+</html>
