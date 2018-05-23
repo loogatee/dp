@@ -6,7 +6,7 @@
     <description>Recent content in Tags on JohnnyReedProjects</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 May 2018 21:52:28 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 15:52:28 -0700</lastBuildDate>
     
 	<atom:link href="https://loogatee.github.io/dp/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Development</title>
       <link>https://loogatee.github.io/dp/tags/development/</link>
-      <pubDate>Fri, 11 May 2018 21:52:28 -0700</pubDate>
+      <pubDate>Wed, 23 May 2018 15:52:28 -0700</pubDate>
       
       <guid>https://loogatee.github.io/dp/tags/development/</guid>
       <description></description>
@@ -66,11 +66,29 @@
     </item>
     
     <item>
+      <title>Modbus</title>
+      <link>https://loogatee.github.io/dp/tags/modbus/</link>
+      <pubDate>Wed, 23 May 2018 12:28:40 -0700</pubDate>
+      
+      <guid>https://loogatee.github.io/dp/tags/modbus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Openwisp</title>
       <link>https://loogatee.github.io/dp/tags/openwisp/</link>
       <pubDate>Sun, 14 Jan 2018 14:28:40 +0530</pubDate>
       
       <guid>https://loogatee.github.io/dp/tags/openwisp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Plc</title>
+      <link>https://loogatee.github.io/dp/tags/plc/</link>
+      <pubDate>Wed, 23 May 2018 12:28:40 -0700</pubDate>
+      
+      <guid>https://loogatee.github.io/dp/tags/plc/</guid>
       <description></description>
     </item>
     

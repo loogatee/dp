@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><style>
+body {
+	display: block;
+	--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		background-image: var(--bgImage) !important;
+	
+}
+
+body, body.pushable {
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover !important;
+}
+
+</style><title>
+IceBear Control Using PLC
+</title><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="John Reed" />
+	<meta name="description" content="Quick Summary: An off-the-shelf external controller may be used to interface directly with the CDC controller to control the IceBears&amp;rsquo; cycle of Making Ice and Providing Cooling. An example scenario will be shown using a PLC-type controller with a Modbus interface that is used to control an IceBear AND ALSO extract data from it.
+CDC Controller GPIO Inputs: The CDC controller has 8 GPIO inputs as shown in the above picture:" />
+<meta name="generator" content="Hugo 0.40.3" />
+
+<link rel="shortcut icon" href="img/defaultFav.ico">
+
+<link rel="canonical" href="https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/" />
+<link rel="alternative" href="/dp/index.xml" title="JohnnyReedProjects" type="application/atom+xml"/>
+<link rel="stylesheet" type="text/css" href="/dp/css/semantic_2.3.1.min.css">
+<style>
+body.pushable {
+	display: block;
+		background-image: var(--bgImage) !important;
+	 ;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/dp/css/site.css">
+<script>
+	var colorBG = ""
+	var enabledPost = true
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+</head>
+
+<body><script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+		var bgImage = "url(" + "" + ")"
+	
+	console.log("Current background: " + bgImage.substring(bgImage.indexOf("bg"), bgImage.length));
+	document.body.style.setProperty('--blurEff',"");
+	document.body.style.setProperty('--bgImage', bgImage);
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min)
+	  max = Math.floor(max)
+	  var random
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random
+	      break
+	    }
+	  }
+	  return random
+	}
+
+	function connect(arr) {
+	  var str = ''
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', '
+	    } else {
+	      str += arr[i]
+	    }
+	  }
+	  return str
+	}
+</script><div class="blur-overlay"></div><div id="sidebar" class="ui sidebar inverted vertical menu">
+	<section id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/dp/img/jr.jpg">
+</div>
+<h3 class="ui header">John Reed
+	<div class="sub header">Computer guy, Golfer dude</div>
+</h3>
+</section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/dp/tags/development/index.html" title="development">development</a>
+
+<a class="ui label" href="/dp/tags/django/index.html" title="django">django</a>
+
+<a class="ui label" href="/dp/tags/esp32/index.html" title="esp32">esp32</a>
+
+<a class="ui label" href="/dp/tags/go/index.html" title="go">go</a>
+
+<a class="ui label" href="/dp/tags/golang/index.html" title="golang">golang</a>
+
+<a class="ui label" href="/dp/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
+
+<a class="ui label" href="/dp/tags/modbus/index.html" title="modbus">modbus</a>
+
+<a class="ui label" href="/dp/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/dp/tags/plc/index.html" title="plc">plc</a>
+
+<a class="ui label" href="/dp/tags/templates/index.html" title="templates">templates</a>
+
+<a class="ui label" href="/dp/tags/themes/index.html" title="themes">themes</a>
+
+</section>	
+	
+	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/cdc/index.html">cdc</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>IceBear Control Using PLC</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/development/index.html">development</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_002/cdc3_host/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>CDC3_Host</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_001/proj_readyforpic/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj_Ready_For_Pic</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/golang/index.html">golang</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/programming/index.html">programming</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_003/netjsonconfig/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Testing &#34;django-netjsonconfig&#34;</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+	</section>
+	
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+<p>© 2018 JohnnyReedProjects</p>
+    
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></section>
+</div>
+<div class="pusher">
+		<div class="flipper">
+			<div class="front">
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div><div class="item">
+		<a href="/dp/index.html">
+			<i class="inverted big link home icon" title="Home"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/dp/post/index.html">
+			<i class="inverted big link archive icon" title="Archive"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/dp/tags/index.html">
+			<i class="inverted big link tags icon" title="All Tags"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/dp/categories/index.html">
+			<i class="inverted big link cubes icon" title="All Categories"></i>
+		</a>
+    </div>
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
+	</div>
+	
+</nav>
+
+
+<div class="ui centered grid">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">
+		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/dp/img/jr.jpg">
+</div>
+<h3 class="ui header">John Reed
+	<div class="sub header">Computer guy, Golfer dude</div>
+</h3>
+</header>
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon down"title="Click this to pop tags and categories"></i>		
+			</div></div>
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/dp/tags/development/index.html" title="development">development</a>
+
+<a class="ui label" href="/dp/tags/django/index.html" title="django">django</a>
+
+<a class="ui label" href="/dp/tags/esp32/index.html" title="esp32">esp32</a>
+
+<a class="ui label" href="/dp/tags/go/index.html" title="go">go</a>
+
+<a class="ui label" href="/dp/tags/golang/index.html" title="golang">golang</a>
+
+<a class="ui label" href="/dp/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
+
+<a class="ui label" href="/dp/tags/modbus/index.html" title="modbus">modbus</a>
+
+<a class="ui label" href="/dp/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/dp/tags/plc/index.html" title="plc">plc</a>
+
+<a class="ui label" href="/dp/tags/templates/index.html" title="templates">templates</a>
+
+<a class="ui label" href="/dp/tags/themes/index.html" title="themes">themes</a>
+
+</section><section class="ui attached inverted segment dream-categories both flexbox">
+			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/cdc/index.html">cdc</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>IceBear Control Using PLC</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/development/index.html">development</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_002/cdc3_host/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>CDC3_Host</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_001/proj_readyforpic/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj_Ready_For_Pic</p>
+		</div>
+	</a>
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/golang/index.html">golang</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_005/goisforlovers/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>(Hu)go Template Primer</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/programming/index.html">programming</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_003/netjsonconfig/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Testing &#34;django-netjsonconfig&#34;</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+			</section></div>
+		<footer class="ui bottom attached center aligned inverted segment">
+<p>© 2018 JohnnyReedProjects</p>
+    
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></footer>
+	</div>
+</div></div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				IceBear Control Using PLC
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>May 23, 2018</span></div>
+					<div><span><i class="clock outline icon"></i>4 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on May 23, 2018</span></div>
+			</div>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#cdc-controller-gpio-inputs">CDC Controller GPIO Inputs:</a></li>
+<li><a href="#motivation-and-method">Motivation and Method</a></li>
+<li><a href="#automationdirect-plc-s">AutomationDirect PLC&rsquo;s</a></li>
+<li><a href="#detailed-wiring-diagram">Detailed Wiring Diagram</a></li>
+<li><a href="#modbus-registers">Modbus Registers</a>
+<ul>
+<li><a href="#ds1-register-40001-host-write-plc-read">DS1 = register 40001 (Host Write / PLC Read)</a></li>
+<li><a href="#ds2-register-40002-host-write-plc-read">DS2 = register 40002 (Host Write / PLC Read)</a></li>
+<li><a href="#ds3-register-40003-host-write-plc-read">DS3 = register 40003 (Host Write / PLC Read)</a></li>
+<li><a href="#ds4-register-40004-host-write-plc-read">DS4 = register 40004 (Host Write / PLC Read)</a></li>
+<li><a href="#ds5-register-40005-plc-write-host-read">DS5 = register 40005 (PLC Write / Host Read)</a></li>
+<li><a href="#ds6-register-40006-plc-write-host-read">DS6 = register 40006 (PLC Write / Host Read)</a></li>
+<li><a href="#ds11-register-40011-plc-write-host-read">DS11 = register 40011 (PLC Write / Host Read)</a></li>
+<li><a href="#ds13-register-40013-plc-write-host-read">DS13 = register 40013 (PLC Write / Host Read)</a></li>
+</ul></li>
+</ul>
+</nav></div>
+			
+			
+			<article class="post-content twemoji">
+				
+
+<p><strong>Quick Summary:</strong>  An off-the-shelf external controller may be used to interface
+directly with the CDC controller to control the IceBears&rsquo; cycle of <em>Making Ice and
+Providing Cooling</em>.  An example scenario will be shown using a PLC-type controller
+with a Modbus interface that is used to control an IceBear <em>AND ALSO</em> extract data
+from it.</p>
+
+<hr />
+
+<h1 id="cdc-controller-gpio-inputs">CDC Controller GPIO Inputs:&nbsp;<a class="anchor" href="#cdc-controller-gpio-inputs"><i class="small linkify icon"></i></a> </h1>
+
+<p><img src="../img/gpio_inputs_header.png" alt="pic1" /></p>
+
+<p>The CDC controller has 8 GPIO inputs as shown in the above picture:</p>
+
+<ul>
+<li>4 pins are dedicated to 5v</li>
+<li>GPIO inputs 1 thru 8</li>
+<li>4 pins are dedicated to Ground</li>
+</ul>
+
+<p>Pin #3 of GPIO inputs is dedicated to the <code>Make Ice</code> function.  If pin 3 is
+jumpered to 5v, the unit will go into <code>Make-Ice</code> mode.</p>
+
+<p><img src="../img/force_make.png" alt="pic2" /></p>
+
+<p>Placing a jumper in like this is a common way for Ice-Energy technicians to
+put the Bear into <code>Make-Ice</code> mode <em>WITHOUT HAVING TO ACCESS THE HOME PAGE</em>.</p>
+
+<p>If the jumper were placed into Pin 4 the <code>Melt</code> functionality would be invoked,
+the refrigerant pump would spin up, and the IceBear would start providing
+cooling.</p>
+
+<hr />
+
+<h1 id="motivation-and-method">Motivation and Method&nbsp;<a class="anchor" href="#motivation-and-method"><i class="small linkify icon"></i></a> </h1>
+
+<p>There are some 3rd parties out there that would prefer to use their own protocols
+for controlling an IceBear, but it&rsquo;s very difficult to add those protocols directly
+to the CDC firmware base.</p>
+
+<blockquote>
+<p>The reason is due to an 8-bit PIC being used as the Network Interface Controller</p>
+</blockquote>
+
+<p>A solution is an external piece of hardware that can run the necessary Software
+protocols and <em>Interface directly to the hardware of the CDC controller for Control
+and Status</em>.</p>
+
+<p>The method for Control and Status is hinted at with the pictures of the GPIO
+input header shown above.  An external piece of HW, withe proper wiring and
+control logic, can control the 5v signals going into the <code>Make/Melt</code> GPIOs.
+This is the basic idea behind having an external controller running an
+IceBear.</p>
+
+<hr />
+
+<h1 id="automationdirect-plc-s">AutomationDirect PLC&rsquo;s&nbsp;<a class="anchor" href="#automationdirect-plc-s"><i class="small linkify icon"></i></a> </h1>
+
+<p>These units are rackable!  They&rsquo;re HW compatible with the CDC Controller, sport a Modbus
+interface over TCP/IP, and they&rsquo;re fairly easy to understand and wire up.</p>
+
+<p>Automation Direct has a nice website for configuring modules together in a package.
+Here&rsquo;s a photo of the units necessary for interfacing with a CDC controller:</p>
+
+<p><img src="../img/cover_PLCmodules.png" alt="pic3" /></p>
+
+<p>Some highlights of these modules:</p>
+
+<ul>
+<li>24v Power Supply</li>
+<li>CPU has an ethernet, which enables <code>Modbus Over Ethernet</code></li>
+<li>A/D input.  Allows transfer of floating point values coming from DAC channel on CDC</li>
+<li>Relay Module Output:  to control Make/Melt via GPIO inputs</li>
+<li>Input Module:  to detect Charge Status and Fault Status on the controller</li>
+</ul>
+
+<hr />
+
+<h1 id="detailed-wiring-diagram">Detailed Wiring Diagram&nbsp;<a class="anchor" href="#detailed-wiring-diagram"><i class="small linkify icon"></i></a> </h1>
+
+<p><img src="../img/Wiring.png" alt="pic4" /></p>
+
+<hr />
+
+<h1 id="modbus-registers">Modbus Registers&nbsp;<a class="anchor" href="#modbus-registers"><i class="small linkify icon"></i></a> </h1>
+
+<p>With wiring complete, <em>Control and Status</em> is achieved by reading and writing
+Modbus registers.</p>
+
+<p>Modbus appears to the programmer as a large shareable register bank.   The
+&lsquo;Host&rsquo; is the Modbus Client and it can Read and Write Modbus registers.
+The CPU module of the PLC can Read and Write those same registers.</p>
+
+<p>The following is a summation of Modbus registers used in
+the PLC as wired in the diagram above.</p>
+
+<h2 id="ds1-register-40001-host-write-plc-read">DS1 = register 40001 (Host Write / PLC Read)&nbsp;<a class="anchor" href="#ds1-register-40001-host-write-plc-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>If DS1 == 1 Then
+    ForceMake = ON      // relay output module (N01)
+Else
+    ForceMake = OFF
+</code></pre>
+
+<h2 id="ds2-register-40002-host-write-plc-read">DS2 = register 40002 (Host Write / PLC Read)&nbsp;<a class="anchor" href="#ds2-register-40002-host-write-plc-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>If DS2 == 1 Then
+    ForceMelt = ON      // relay output module (N02)
+Else
+    ForceMelt = OFF
+</code></pre>
+
+<h2 id="ds3-register-40003-host-write-plc-read">DS3 = register 40003 (Host Write / PLC Read)&nbsp;<a class="anchor" href="#ds3-register-40003-host-write-plc-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>If DS3 == 1 Then
+    SystemOff = ON      // relay output module (N03)
+Else
+    SystemOff = OFF
+</code></pre>
+
+<h2 id="ds4-register-40004-host-write-plc-read">DS4 = register 40004 (Host Write / PLC Read)&nbsp;<a class="anchor" href="#ds4-register-40004-host-write-plc-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>If DS4 == 1 Then
+    Bypass = ON         // relay output module (N04)
+Else
+    Bypass = OFF
+</code></pre>
+
+<h2 id="ds5-register-40005-plc-write-host-read">DS5 = register 40005 (PLC Write / Host Read)&nbsp;<a class="anchor" href="#ds5-register-40005-plc-write-host-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>If ChargeStatus_Input == ON Then      // DC Input Module (1)
+    DS5 = 1
+Else
+    DS5 = 0
+</code></pre>
+
+<h2 id="ds6-register-40006-plc-write-host-read">DS6 = register 40006 (PLC Write / Host Read)&nbsp;<a class="anchor" href="#ds6-register-40006-plc-write-host-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>If FaultStatus_Input == ON Then      // DC Input Module (2)
+    DS6 = 1
+Else
+    DS6 = 0
+</code></pre>
+
+<h2 id="ds11-register-40011-plc-write-host-read">DS11 = register 40011 (PLC Write / Host Read)&nbsp;<a class="anchor" href="#ds11-register-40011-plc-write-host-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>
+SystemCapacity = DS11 / 10           // Analog Voltage Input (CH1)
+
+</code></pre>
+
+<p>This means that the Host reads DS11 and then divides by 10 to get the SystemCapacity.</p>
+
+<h2 id="ds13-register-40013-plc-write-host-read">DS13 = register 40013 (PLC Write / Host Read)&nbsp;<a class="anchor" href="#ds13-register-40013-plc-write-host-read"><i class="small linkify icon"></i></a> </h2>
+
+<pre><code>
+UnitActivePowerFlow = DS13 / 10           // Analog Voltage Input (CH2)
+
+</code></pre>
+
+<p>This means that the Host reads DS13 and then divides by 10 to get the ActivePowerFlow.</p>
+
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/dp/tags/development/index.html" title="development">development</a>
+
+<a class="ui label" href="/dp/tags/django/index.html" title="django">django</a>
+
+<a class="ui label" href="/dp/tags/esp32/index.html" title="esp32">esp32</a>
+
+<a class="ui label" href="/dp/tags/go/index.html" title="go">go</a>
+
+<a class="ui label" href="/dp/tags/golang/index.html" title="golang">golang</a>
+
+<a class="ui label" href="/dp/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
+
+<a class="ui label" href="/dp/tags/modbus/index.html" title="modbus">modbus</a>
+
+<a class="ui label" href="/dp/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/dp/tags/plc/index.html" title="plc">plc</a>
+
+<a class="ui label" href="/dp/tags/templates/index.html" title="templates">templates</a>
+
+<a class="ui label" href="/dp/tags/themes/index.html" title="themes">themes</a>
+
+
+		</section>
+	</div>
+</div>
+
+			</div>
+			<div class="back"><nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div><div class="item">
+	<a href="https://github.com/loogatee" target="_blank">
+		<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+	</a>
+</div>
+<div class="item">
+	<a href="mailto:johnr@loogatee.com">
+		<i id="ico" class="inverted big link mail icon" title="Email"></i>
+	</a>
+</div>
+
+</nav>
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments"><div class="ui inverted segment">
+	<article class="twemoji"><h1>Johnny Reed</h1>
+
+<hr />
+
+<p><br>
+Firmware guy, linux expert, Master of making stuff work</article>
+</div></section>
+	</div>
+</div></div>
+		</div>
+	</div><script src="/dp/js/jquery_3.3.1.min.js"></script>
+<script src="/dp/js/site.js"></script>
+<script src="/dp/js/semantic_2.3.1.min.js"></script>
+
+
+
+</body>
+
+</html>

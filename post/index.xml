@@ -6,18 +6,28 @@
     <description>Recent content in Posts on JohnnyReedProjects</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 May 2018 21:52:28 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 23 May 2018 15:52:28 -0700</lastBuildDate>
     
 	<atom:link href="https://loogatee.github.io/dp/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Proj1</title>
-      <link>https://loogatee.github.io/dp/post/post_002/proj1/</link>
-      <pubDate>Fri, 11 May 2018 21:52:28 -0700</pubDate>
+      <title>CDC3_Host</title>
+      <link>https://loogatee.github.io/dp/post/post_002/cdc3_host/</link>
+      <pubDate>Wed, 23 May 2018 15:52:28 -0700</pubDate>
       
-      <guid>https://loogatee.github.io/dp/post/post_002/proj1/</guid>
+      <guid>https://loogatee.github.io/dp/post/post_002/cdc3_host/</guid>
       <description>This is just a test not sure what else to put in here This is just a test not sure what else to put in here</description>
+    </item>
+    
+    <item>
+      <title>IceBear Control Using PLC</title>
+      <link>https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/</link>
+      <pubDate>Wed, 23 May 2018 12:28:40 -0700</pubDate>
+      
+      <guid>https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/</guid>
+      <description>Quick Summary: An off-the-shelf external controller may be used to interface directly with the CDC controller to control the IceBears&amp;rsquo; cycle of Making Ice and Providing Cooling. An example scenario will be shown using a PLC-type controller with a Modbus interface that is used to control an IceBear AND ALSO extract data from it.
+CDC Controller GPIO Inputs: The CDC controller has 8 GPIO inputs as shown in the above picture:</description>
     </item>
     
     <item>

@@ -28,9 +28,9 @@ body, body.pushable {
 
 <link rel="shortcut icon" href="img/defaultFav.ico">
 
-<link rel="canonical" href="/dphttps://loogatee.github.io/dp/post/post_005/goisforlovers/" />
-<link rel="alternative" href="/dp/dp/index.xml" title="JohnnyReedProjects" type="application/atom+xml"/>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+<link rel="canonical" href="https://loogatee.github.io/dp/post/post_005/goisforlovers/" />
+<link rel="alternative" href="/dp/index.xml" title="JohnnyReedProjects" type="application/atom+xml"/>
+<link rel="stylesheet" type="text/css" href="/dp/css/semantic_2.3.1.min.css">
 <style>
 body.pushable {
 	display: block;
@@ -101,7 +101,11 @@ var bodyBgSwitchIndex = 0;
 
 <a class="ui label" href="/dp/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
 
+<a class="ui label" href="/dp/tags/modbus/index.html" title="modbus">modbus</a>
+
 <a class="ui label" href="/dp/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/dp/tags/plc/index.html" title="plc">plc</a>
 
 <a class="ui label" href="/dp/tags/templates/index.html" title="templates">templates</a>
 
@@ -113,14 +117,29 @@ var bodyBgSwitchIndex = 0;
 		<div class="ui inverted accordion">
 <div class="title">
 	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/cdc/index.html">cdc</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>IceBear Control Using PLC</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
 	<a class="link" href="/dp/categories/development/index.html">development</a>
 </div>
 <div class="content">
 
-	<a class="item" href="https://loogatee.github.io/dp/post/post_002/proj1/index.html">
+	<a class="item" href="https://loogatee.github.io/dp/post/post_002/cdc3_host/index.html">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>Proj1</p>
+			<p>CDC3_Host</p>
 		</div>
 	</a>
 
@@ -240,7 +259,11 @@ var bodyBgSwitchIndex = 0;
 
 <a class="ui label" href="/dp/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
 
+<a class="ui label" href="/dp/tags/modbus/index.html" title="modbus">modbus</a>
+
 <a class="ui label" href="/dp/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/dp/tags/plc/index.html" title="plc">plc</a>
 
 <a class="ui label" href="/dp/tags/templates/index.html" title="templates">templates</a>
 
@@ -250,14 +273,29 @@ var bodyBgSwitchIndex = 0;
 			<div class="inverted accordion">
 <div class="title">
 	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/cdc/index.html">cdc</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>IceBear Control Using PLC</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
 	<a class="link" href="/dp/categories/development/index.html">development</a>
 </div>
 <div class="content">
 
-	<a class="item" href="https://loogatee.github.io/dp/post/post_002/proj1/index.html">
+	<a class="item" href="https://loogatee.github.io/dp/post/post_002/cdc3_host/index.html">
 		<div>
 			<i class="cocktail icon"></i>
-			<p>Proj1</p>
+			<p>CDC3_Host</p>
 		</div>
 	</a>
 
@@ -322,7 +360,7 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Apr 2, 2014</span></div>
-					<div><span><i class="clock outline icon"></i>7 min read</span></div>
+					<div><span><i class="clock outline icon"></i>8 min read</span></div>
 					<div><span><i class="angle double up icon"></i>Last updated on Apr 2, 2014</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
@@ -433,9 +471,17 @@ are useful for building websites. Functions are called by using their name
 followed by the required parameters separated by spaces. Template
 functions cannot be added without recompiling hugo.</p>
 
-<p><strong>Example:</strong></p>
+<p><strong>Example 1:</strong></p>
 
 <pre><code>{{ add 1 2 }}
+</code></pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><code>void main(void)
+{
+    print(&quot;hello world\n&quot;);
+}
 </code></pre>
 
 <h2 id="includes">Includes&nbsp;<a class="anchor" href="#includes"><i class="small linkify icon"></i></a> </h2>
@@ -715,7 +761,11 @@ so, such as in this example:</p>
 
 <a class="ui label" href="/dp/tags/google-code-in/index.html" title="google-code-in">google-code-in</a>
 
+<a class="ui label" href="/dp/tags/modbus/index.html" title="modbus">modbus</a>
+
 <a class="ui label" href="/dp/tags/openwisp/index.html" title="openwisp">openwisp</a>
+
+<a class="ui label" href="/dp/tags/plc/index.html" title="plc">plc</a>
 
 <a class="ui label" href="/dp/tags/templates/index.html" title="templates">templates</a>
 
@@ -755,9 +805,9 @@ Firmware guy, linux expert, Master of making stuff work</article>
 	</div>
 </div></div>
 		</div>
-	</div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</div><script src="/dp/js/jquery_3.3.1.min.js"></script>
 <script src="/dp/js/site.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+<script src="/dp/js/semantic_2.3.1.min.js"></script>
 
 
 
