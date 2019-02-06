@@ -1,5 +1,5 @@
 ---
-title:  "IceBear Control Using PLC"
+title:  "IceBear Control using PLC"
 date:   2018-05-23T12:28:40-07:00
 tags:
 - modbus
