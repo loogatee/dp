@@ -1,6 +1,6 @@
 ---
 title: "Proj_Ready_For_Pic"
-date:  2018-05-11T21:52:28-07:00
+date:  2018-05-11T21:52:28
 draft: true
 cover: "/dp/img/cover_rfpic.jpg"
 tags:
