@@ -1,19 +1,26 @@
 #!/bin/bash
 
 
-rm -rf ./docs
+#rm -rf ./docs
 
-hugo -c "./content" -d "./docs"
 
-mv ./docs/img/README.txt ./docs/README.md
+#mv ./docs/img/README.txt ./docs/README.md
 
-#
-# ==========================================
-#
+rm -f  404.html
+rm -f  index.html
+rm -f  index.xml
+rm -f  robots.txt
+rm -f  sitemap.xml
 
-#rm -rf ./docs_priv
-#
-#hugo -c "./content_priv" -d "./docs_priv"
-#
-#mv ./docs_priv/img/README.txt ./docs_priv/README.md
-#
+rm -rf categories
+rm -rf content
+rm -rf css
+rm -rf fonts
+rm -rf img
+rm -rf js
+rm -rf page
+rm -rf post
+rm -rf tags
+
+
+hugo -c "./mycontent" -d "./"

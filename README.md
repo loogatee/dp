@@ -3,8 +3,8 @@ This is a Hugo tree, and is meant to be built using
 [hugo](https://gohugo.io).
 
 ```
-     git clone https://github.com/ice-energy/jreed.git
-     cd jreed
+     git clone https://github.com/loogatee/dp.git
+     cd dp
      hugo
 ```
 
