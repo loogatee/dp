@@ -1,7 +1,7 @@
 ---
-title: "CDC3_Host"
-date: 2018-05-23T15:52:28-07:00
-draft: true
+title: "CDC3 Host Architecture"
+date: 2019-02-06T11:52:28
+draft: false
 cover: "/dp/img/cover_CDC3Host.jpg"
 tags:
   - "development"
