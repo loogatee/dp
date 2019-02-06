@@ -1,6 +1,6 @@
 <div class="ui small circular image">
 	{{- if .Site.Params.avatar }}
-	<img src="/jreed/img/jr.jpg">
+	<img src="/dp/img/jr.jpg">
 	{{- else -}}
 	{{- .Scratch.Set "avatar" (index (shuffle (seq 1 4)) 0 ) -}}
 	<img src="/img/avatar{{ .Scratch.Get `avatar` }}.svg">

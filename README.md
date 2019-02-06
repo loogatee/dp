@@ -34,16 +34,16 @@ thing:  you have to commit locally before pushing to the server)
 Then browse to: (might take 30 seconds for the changes to show up)
 
 ```
-     ice-energy.github.io/jreed
+     loogatee.github.io/dp
 ```
 
 To allow for these server pages on GitHub, a particular setup
 on the repository needs to be done.
 
 ```
-     github.com/ice-energy
-     You have to be logged in as ice-energy
-     You have to be in the jreed repository
+     github.com/loogatee
+     You have to be logged in as loogatee
+     You have to be in the dp repository
      Click the Settings Tab up near the top
 ```
 
