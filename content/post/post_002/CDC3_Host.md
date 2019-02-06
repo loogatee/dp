@@ -12,11 +12,5 @@ menu: main
 ![Intro](../img/cover_CDC3Host.jpg)
 
 ---
-This is just a test
-not sure what else to
-put in here
-<br>
-This is just a test
-not sure what else to
-put in here
+Placeholder for now
 
