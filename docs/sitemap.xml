@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/</loc>
+    <lastmod>2018-05-23T12:28:40-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/post/post_004/mos/</loc>
+    <lastmod>2018-01-28T18:59:43+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/post/post_003/netjsonconfig/</loc>
+    <lastmod>2018-01-14T14:28:40+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/post/post_006/gci/</loc>
+    <lastmod>2018-01-13T10:29:23+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/post/post_005/goisforlovers/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/content/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/categories/cdc/</loc>
+    <lastmod>2018-05-23T12:28:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/content/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/development/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/categories/development/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/django/</loc>
+    <lastmod>2018-01-14T14:28:40+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/esp32/</loc>
+    <lastmod>2018-01-28T18:59:43+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/go/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/golang/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/categories/golang/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/google-code-in/</loc>
+    <lastmod>2018-01-13T10:29:23+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/</loc>
+    <lastmod>2018-05-23T12:28:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/modbus/</loc>
+    <lastmod>2018-05-23T12:28:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/openwisp/</loc>
+    <lastmod>2018-01-14T14:28:40+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/plc/</loc>
+    <lastmod>2018-05-23T12:28:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/post/</loc>
+    <lastmod>2018-05-23T12:28:40-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/categories/programming/</loc>
+    <lastmod>2018-01-14T14:28:40+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/templates/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://loogatee.github.io/dp/tags/themes/</loc>
+    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
