@@ -1,7 +1,7 @@
 baseURL                = "https://loogatee.github.io/dp"
 languageCode           = "en-us"
 defaultContentLanguage = "en"
-title                  = "JohnReedDocs"
+title                  = "JohnnyReedDocs"
 theme                  = "dream-plus"
 canonifyURLs           = false
 

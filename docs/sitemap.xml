@@ -3,8 +3,8 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://loogatee.github.io/dp/post/post_007/plc_controls_icebear/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
+    <loc>https://loogatee.github.io/dp/post/post_001/proj_readyforpic/</loc>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
   </url>
   
   <url>
@@ -12,13 +12,14 @@
   </url>
   
   <url>
-    <loc>https://loogatee.github.io/dp/categories/</loc>
+    <loc>https://loogatee.github.io/dp/categories/bareboards/</loc>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://loogatee.github.io/dp/categories/cdc/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
+    <loc>https://loogatee.github.io/dp/categories/</loc>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -29,31 +30,25 @@
   
   <url>
     <loc>https://loogatee.github.io/dp/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://loogatee.github.io/dp/tags/modbus/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://loogatee.github.io/dp/tags/plc/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
+    <loc>https://loogatee.github.io/dp/tags/pic/</loc>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://loogatee.github.io/dp/post/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://loogatee.github.io/dp/tags/</loc>
-    <lastmod>2018-05-23T12:28:40+00:00</lastmod>
+    <lastmod>2018-05-11T21:52:28-07:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on JohnReedDocs</title>
+    <title>Tags on JohnnyReedDocs</title>
     <link>https://loogatee.github.io/dp/tags/</link>
-    <description>Recent content in Tags on JohnReedDocs</description>
+    <description>Recent content in Tags on JohnnyReedDocs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 23 May 2018 12:28:40 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 11 May 2018 21:52:28 -0700</lastBuildDate>
     
 	<atom:link href="https://loogatee.github.io/dp/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Modbus</title>
-      <link>https://loogatee.github.io/dp/tags/modbus/</link>
-      <pubDate>Wed, 23 May 2018 12:28:40 +0000</pubDate>
+      <title>Pic</title>
+      <link>https://loogatee.github.io/dp/tags/pic/</link>
+      <pubDate>Fri, 11 May 2018 21:52:28 -0700</pubDate>
       
-      <guid>https://loogatee.github.io/dp/tags/modbus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Plc</title>
-      <link>https://loogatee.github.io/dp/tags/plc/</link>
-      <pubDate>Wed, 23 May 2018 12:28:40 +0000</pubDate>
-      
-      <guid>https://loogatee.github.io/dp/tags/plc/</guid>
+      <guid>https://loogatee.github.io/dp/tags/pic/</guid>
       <description></description>
     </item>
     
