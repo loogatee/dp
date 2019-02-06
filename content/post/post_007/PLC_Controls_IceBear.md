@@ -6,7 +6,7 @@ tags:
 - PLC
 categories:
 - cdc
-description : "a PLC-type controller with a Modbus interface is used to control an
+description : "a PLC-type controller with a modbus interface is used to control an
 IceBear and also extract data from it"
 cover: "/dp/img/cover_PLCmodules.png"
 draft: false
