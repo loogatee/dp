@@ -1,0 +1,79 @@
+
+EE Grad specializing in firmware development, and strongly rooted in Unix/Linux.
+
+I've primarily been in the consumer space, and I've seen many, many products out the door.
+  
+Primarily R&D, but have proved valuable in Test, Ops, Manufacturing.
+
+Work best on small teams where there is a large amount of personal responsibility.  I'm a natural lead who is great to work with, needs little supervision, and really gets along with everyone!
+
+That rare engineer who is Great with documentation.   Have LaTex docs dating back to 1990.  Been using Hugo hosted on GitHub now.
+
+----------------
+
+I've used about all the processor platforms over the years starting with 6800, 68000, some i86, i960.  And more recently: AVR, PIC, ARM, Blackfin, Mips.
+
+Find some projects of mine under 'loogatee' at github.
+
+Did about everything you could do with 8 bit PIC's while working at BlackDiamond.  I became very skilled at configuring and using the microchip USB stack.   
+
+Have recently used the ST40X series for evaluation together with Atollic TrueStudio.  Really like the ST processors, and TrueStudio is awesome!
+
+At Ice-Energy, I own all the firmware for the controller board which spans 2 processors: a PIC and a Blackfin.  The PIC has a network interface, and the Blackfin does all the controls and data storage.   Firmware encompasses:
+   - SPI devices: A/D chips, PIC to BF if, Power chip, 8MB spi flash
+   - I2C devices: RTC, Dac chip
+   - Stepper Driver:  an EEV
+   - GPIO's:  both input and output
+   - Flash:   2 MB of data storage
+   - on the PIC: the TCP/IP network stack from microchip
+
+Other parts of the code I wrote:
+   - file system: OS driver endpoints to a custom Flash File System
+   - integration of Lua: to handle configuration and HTTP Server Endpoint
+   - PhoneHome client:  Data and control interaction with a server
+
+Now maintain and enhance:
+   - the MakeIce routine:  Controlling the EEV to a specific SuperHeat
+   - Melt Ice:  recently wrote PID Loop which controls Pump RPM to
+                achieve constant Wet Suction Temperature
+
+---------------
+
+I'm a long-time Unix/Linux user dating back to having a Sun-1 Desktop in 1985.  I've had various flavors of a Unix desktop since then.
+
+At Systech I wrote Unix tty Device Drivers for Mini-computers and Mainframes.  I wrote a highly reviewed document: "High-Level Design of the Unplug Streams Driver".  Written in early 1990.
+
+I do all my proto-typing and tools development under Linux.   Languages I'm primarily 'C' and Lua.
+
+Have also done integration type work with the plethora of SBC's out there from: raspberry pi, beaglebone, boundary devices, GL-Inet.
+
+Can do custom builds with 'Ubuntu Base' (Trusty Tahr).  Can also do custom builds with OpenWRT, and have had some great success in using it to enhance connectivity with the Ice-Energy controller.
+
+---------------
+
+At age 30 I started becoming interested in golf, and by age 34 I was playing almost every weekend at Torrey Pines.    I'm still pretty decent, but my 20-year stint as a 5-handicap is slipping.
+
+What has endured though, and has become sharper and more focused over the years is a Golf League website that I've been running for 20 years now.  Wow, 20 years, amazing to think I've been doing it for 20 years.
+
+It's for the Golf Guys in Greeley, CO.   I love them.  The website runs under Google App Engine, and written in python.
+
+Some of the former players in the League have moved away from Greeley, and I've started Leagues for them.   I've done leagues for Fort Morgan and Willis Case in addition to Greeley.
+
+Find the site at:  loogatee com
+
+---------------
+
+For some real Throwback:
+
+google on:                        comp.os.xinu google groups
+click on the top hit:             "comp.os.xinu - Google Groups"
+Search on (include the quotes):   "John Reed"
+
+                Enjoy!
+
+This quote is in one of my old posts:   "Our board has a 960CA at 33Mhz, 2 Megs of Ram, and an Intel 82596 ethernet controller. This board is a real screamer!  And it runs Xinu!  Pretty neat.   ;-)"
+
+
+
+
+
