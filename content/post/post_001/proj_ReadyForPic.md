@@ -15,9 +15,4 @@ menu: main
 
 ## Hello World
 
-Random
-<br>
-Random
-<br>
-Random
-
+xx
