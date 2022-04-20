@@ -25,7 +25,7 @@ is here:  [xinu port to i960](https://groups.google.com/g/comp.os.xinu/c/EyDuClh
 
 # The Post
 
-````markdown
+```
 Note***
 
 The following message is for ch...@gestetner.oz.au (Mario Mendes) but
@@ -157,3 +157,4 @@ Thanks Doug!
 John Reed {uunet,ucsd}!systech!johnr
 Systech johnr%systech.uucp@ucsd
 --------------------------------------------------------------
+```
