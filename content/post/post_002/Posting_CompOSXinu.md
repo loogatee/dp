@@ -8,7 +8,7 @@ categories:
 - Systems/Solutions
 description : "comp.os.xinu posting from 1991 regarding my port of i960CA "
 draft: false
-cover: "/img/cover_xinu_book.jpg"
+cover: "/dp/img/cover_xinu_book.jpg"
 menu: main
 
 ---
