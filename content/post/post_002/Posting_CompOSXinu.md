@@ -19,11 +19,12 @@ menu: main
 
 Back in the day I ported xinu to and i960CA processor.
 This is a posting I made to comp.os.xinu describing the port.
+<br>
 If you have access to Google Groups, the original post
 is here:  [xinu port to i960](https://groups.google.com/g/comp.os.xinu/c/EyDuClhGFvo/m/UHYCB_CdCYkJ).
 
 
-# The Post
+# Xinu on the i960CA
 
 ```
 Note***
