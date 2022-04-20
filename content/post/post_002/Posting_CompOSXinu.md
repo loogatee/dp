@@ -17,7 +17,7 @@ menu: main
 
 ---
 
-Back in the day I ported xinu to and i960CA processor.
+Back in the day I ported xinu to an i960CA processor.
 This is a posting I made to comp.os.xinu describing the port.
 <br>
 If you have access to Google Groups, the original post
