@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on JohnnyReedDocs</title>
-    <link>https://loogatee.github.io/dp/post/</link>
-    <description>Recent content in Posts on JohnnyReedDocs</description>
+    <title>Github on JohnnyReedDocs</title>
+    <link>https://loogatee.github.io/dp/tags/github/</link>
+    <description>Recent content in Github on JohnnyReedDocs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 20 Apr 2022 12:19:00 +0000</lastBuildDate>
     
-	<atom:link href="https://loogatee.github.io/dp/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://loogatee.github.io/dp/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,15 +20,6 @@
       <description>Back in the day I ported xinu to and i960CA processor. This is a posting I made to comp.os.xinu describing the port. If you have access to Google Groups, the original post is here: xinu port to i960.
 The Post ````markdown Note***
 The following message is for ch&amp;hellip;@gestetner.oz.au (Mario Mendes) but in general I would be interested in discussing this with anyone. I attempted to mail this to chris around December 1990.</description>
-    </item>
-    
-    <item>
-      <title>Proj_Ready_For_Pic</title>
-      <link>https://loogatee.github.io/dp/post/post_001/proj_readyforpic/</link>
-      <pubDate>Fri, 11 May 2018 21:52:28 -0700</pubDate>
-      
-      <guid>https://loogatee.github.io/dp/post/post_001/proj_readyforpic/</guid>
-      <description>Hello World xx</description>
     </item>
     
   </channel>

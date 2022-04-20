@@ -6,10 +6,21 @@
     <description>Recent content on JohnnyReedDocs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 May 2018 21:52:28 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2022 12:19:00 +0000</lastBuildDate>
     
 	<atom:link href="https://loogatee.github.io/dp/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Posting comp.os.xinu</title>
+      <link>https://loogatee.github.io/dp/post/post_002/posting_composxinu/</link>
+      <pubDate>Wed, 20 Apr 2022 12:19:00 +0000</pubDate>
+      
+      <guid>https://loogatee.github.io/dp/post/post_002/posting_composxinu/</guid>
+      <description>Back in the day I ported xinu to and i960CA processor. This is a posting I made to comp.os.xinu describing the port. If you have access to Google Groups, the original post is here: xinu port to i960.
+The Post ````markdown Note***
+The following message is for ch&amp;hellip;@gestetner.oz.au (Mario Mendes) but in general I would be interested in discussing this with anyone. I attempted to mail this to chris around December 1990.</description>
+    </item>
     
     <item>
       <title>Proj_Ready_For_Pic</title>
@@ -27,7 +38,7 @@
       
       <guid>https://loogatee.github.io/dp/content/about/</guid>
       <description>Johnny Reed 
-Firmware guy, linux expert, Master of making stuff work</description>
+Firmware guy, Linux expert, Microcontroller guru, Master of making stuff work</description>
     </item>
     
   </channel>

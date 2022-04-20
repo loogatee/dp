@@ -6,10 +6,19 @@
     <description>Recent content in Tags on JohnnyReedDocs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 May 2018 21:52:28 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2022 12:19:00 +0000</lastBuildDate>
     
 	<atom:link href="https://loogatee.github.io/dp/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Github</title>
+      <link>https://loogatee.github.io/dp/tags/github/</link>
+      <pubDate>Wed, 20 Apr 2022 12:19:00 +0000</pubDate>
+      
+      <guid>https://loogatee.github.io/dp/tags/github/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Pic</title>
@@ -17,6 +26,15 @@
       <pubDate>Fri, 11 May 2018 21:52:28 -0700</pubDate>
       
       <guid>https://loogatee.github.io/dp/tags/pic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xinu</title>
+      <link>https://loogatee.github.io/dp/tags/xinu/</link>
+      <pubDate>Wed, 20 Apr 2022 12:19:00 +0000</pubDate>
+      
+      <guid>https://loogatee.github.io/dp/tags/xinu/</guid>
       <description></description>
     </item>
     

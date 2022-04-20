@@ -2,4 +2,4 @@
 
 ----
 <br>
-Firmware guy, linux expert, Master of making stuff work
+Firmware guy, Linux expert, Microcontroller guru, Master of making stuff work

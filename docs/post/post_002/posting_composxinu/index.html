@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><style>
+body {
+	display: block;
+	--colorBG: "#40e0d0, #ff8c00, #ff0080";
+		background-image: var(--bgImage) !important;
+	
+}
+
+body, body.pushable {
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover !important;
+}
+
+</style><title>
+Posting comp.os.xinu
+</title><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="author" content="John Reed" />
+	<meta name="description" content="Back in the day I ported xinu to and i960CA processor. This is a posting I made to comp.os.xinu describing the port. If you have access to Google Groups, the original post is here: xinu port to i960.
+The Post ````markdown Note***
+The following message is for ch&amp;hellip;@gestetner.oz.au (Mario Mendes) but in general I would be interested in discussing this with anyone. I attempted to mail this to chris around December 1990." />
+<meta name="generator" content="Hugo 0.40.2" />
+
+<link rel="shortcut icon" href="img/defaultFav.ico">
+
+<link rel="canonical" href="https://loogatee.github.io/dp/post/post_002/posting_composxinu/" />
+<link rel="alternative" href="/dp/index.xml" title="JohnnyReedDocs" type="application/atom+xml"/>
+<link rel="stylesheet" type="text/css" href="/dp/css/semantic_2.3.1.min.css">
+<style>
+body.pushable {
+	display: block;
+		background-image: var(--bgImage) !important;
+	 ;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/dp/css/site.css">
+<script>
+	var colorBG = ""
+	var enabledPost = true
+	var isMobile = ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+	console.log("The client device is a "+(isMobile?"mobile":"PC")+".")
+</script>
+</head>
+
+<body><script>
+var prevBgIndex = 0;
+var bodyBgSwitchIndex = 0;
+		var bgImage = "url(" + "" + ")"
+	
+	console.log("Current background: " + bgImage.substring(bgImage.indexOf("bg"), bgImage.length));
+	document.body.style.setProperty('--blurEff',"");
+	document.body.style.setProperty('--bgImage', bgImage);
+
+	function getRandomInt(min, max) {
+	  min = Math.ceil(min)
+	  max = Math.floor(max)
+	  var random
+	  while (1) {
+	    random = Math.floor(Math.random() * (max - min)) + min
+	    if (random !== prevBgIndex) {
+	      prevBgIndex = random
+	      break
+	    }
+	  }
+	  return random
+	}
+
+	function connect(arr) {
+	  var str = ''
+	  for (var i = 0; i < arr.length; i++) {
+	    if (i !== arr.length - 1) {
+	      str += arr[i] + ', '
+	    } else {
+	      str += arr[i]
+	    }
+	  }
+	  return str
+	}
+</script><div class="blur-overlay"></div><div id="sidebar" class="ui sidebar inverted vertical menu">
+	<section id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/dp/img/jr.jpg">
+</div>
+<h3 class="ui header">John Reed
+	<div class="sub header">Computer guy, Golfer dude</div>
+</h3>
+</section><section class="ui attached center aligned inverted segment sidebar-dream-tags">
+<a class="ui label" href="/dp/tags/github/index.html" title="github">github</a>
+
+<a class="ui label" href="/dp/tags/pic/index.html" title="pic">pic</a>
+
+<a class="ui label" href="/dp/tags/xinu/index.html" title="xinu">xinu</a>
+
+</section>	
+	
+	<section class="ui attached inverted segment sidebar-dream-categories both flexbox">
+		<div class="ui inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/bareboards/index.html">bareboards</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_001/proj_readyforpic/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj_Ready_For_Pic</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/systems/solutions/index.html">systems/solutions</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_002/posting_composxinu/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Posting comp.os.xinu</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+	</section>
+	
+	
+	<section id="footer" class="ui bottom attached center aligned inverted segment">
+<p>© 2022 JohnnyReedDocs</p>
+    
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></section>
+</div>
+<div class="pusher">
+		<div class="flipper">
+			<div class="front">
+<nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div><div class="item">
+		<a href="/dp/index.html">
+			<i class="inverted big link home icon" title="Home"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/dp/post/index.html">
+			<i class="inverted big link archive icon" title="Archive"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/dp/tags/index.html">
+			<i class="inverted big link tags icon" title="All Tags"></i>
+		</a>
+	</div>
+	<div class="item">
+		<a href="/dp/categories/index.html">
+			<i class="inverted big link cubes icon" title="All Categories"></i>
+		</a>
+    </div>
+	<div class="ui container tablet computer only grid">
+		<div class="item" onClick="$('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');">
+			<i class="inverted big link sidebar icon" title="Show Sidebar"></i>
+		</div>
+	</div>
+	
+</nav>
+
+
+<div class="ui centered grid">
+	<div class="sixteen wide mobile only column"><div class="ui inverted accordion">
+	<div id="header" class="ui inverted segment column box">
+		<header id="author" class="ui top attached center aligned inverted segment"><div class="ui small circular image">
+	<img src="/dp/img/jr.jpg">
+</div>
+<h3 class="ui header">John Reed
+	<div class="sub header">Computer guy, Golfer dude</div>
+</h3>
+</header>
+		<div class=" title header-title"><div id="tag-category-pop" class="ui red right corner label">		
+				<i class="hand point icon down"title="Click this to pop tags and categories"></i>		
+			</div></div>
+		<div id="tag-category" class=" content"><section class="ui attached center aligned inverted segment dream-tags none flexbox">
+<a class="ui label" href="/dp/tags/github/index.html" title="github">github</a>
+
+<a class="ui label" href="/dp/tags/pic/index.html" title="pic">pic</a>
+
+<a class="ui label" href="/dp/tags/xinu/index.html" title="xinu">xinu</a>
+
+</section><section class="ui attached inverted segment dream-categories both flexbox">
+			<div class="inverted accordion">
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/bareboards/index.html">bareboards</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_001/proj_readyforpic/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Proj_Ready_For_Pic</p>
+		</div>
+	</a>
+
+</div>
+
+<div class="title">
+	<i class="dropdown icon"></i>
+	<a class="link" href="/dp/categories/systems/solutions/index.html">systems/solutions</a>
+</div>
+<div class="content">
+
+	<a class="item" href="https://loogatee.github.io/dp/post/post_002/posting_composxinu/index.html">
+		<div>
+			<i class="cocktail icon"></i>
+			<p>Posting comp.os.xinu</p>
+		</div>
+	</a>
+
+</div>
+
+</div>
+			</section></div>
+		<footer class="ui bottom attached center aligned inverted segment">
+<p>© 2022 JohnnyReedDocs</p>
+    
+<p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with <a href="https://github.com/UtkarshVerma/hugo-dream-plus" target="_blank">Dream Plus</a> theme.</p></footer>
+	</div>
+</div></div>
+	<div class="sixteen wide mobile fifteen wide tablet twelve wide computer column post-list">
+		<section class="ui secondary top attached black segment post-head">
+			<h1 class="post-title">
+				Posting comp.os.xinu
+			</h1>
+			<div class="sub header">
+					<div><span><i class="calendar outline icon"></i>Apr 20, 2022</span></div>
+					<div><span><i class="clock outline icon"></i>5 min read</span></div>
+					<div><span><i class="angle double up icon"></i>Last updated on Apr 20, 2022</span></div>
+			</div>
+			<hr><div class="toc"><nav id="TableOfContents">
+<ul>
+<li><a href="#the-post">The Post</a></li>
+<li><a href="#1-getstk-was-modified-quite-a-bit-the-idea-is-to-return-the-starting">1. getstk() was modified quite a bit. The idea is to return the starting</a></li>
+<li><a href="#address-of-the-block-instead-of-the-ending-address-just-had">address of the block instead of the ending address. Just had</a></li>
+<li><a href="#a-thought-while-writing-this-i-wonder-if-we-even-need-getstk">a thought while writing this: I wonder if we even need getstk??</a></li>
+<li><a href="#maybe-getmem-can-completely-replace-getstk">Maybe getmem() can completely replace getstk().</a></li>
+<li><a href="#2-create-had-to-be-modified-most-of-the-mods-concerned-how-the">2. create() had to be modified. Most of the mods concerned how the</a></li>
+<li><a href="#stack-needed-to-be-manipulated-so-the-process-would-start-up-and">stack needed to be manipulated so the process would start up and</a></li>
+<li><a href="#terminate-correctly">terminate correctly.</a></li>
+<li><a href="#3-resched-was-modified-so-that-no-context-switches-are-allowed">3. resched() was modified so that NO context switches are allowed</a></li>
+<li><a href="#during-an-interrupt">during an interrupt.</a></li>
+<li><a href="#4-i-added-a-routine-that-isr-s-may-optionally-call-that-will-cause">4. I added a routine that ISR&rsquo;s may optionally call that will cause</a></li>
+<li><a href="#resched-to-run-after-the-isr-has-completed-and-returned">resched() to run after the ISR has completed and returned.</a></li>
+<li><a href="#5-the-addarg-routine-in-the-shell-needed-to-be-re-written-i-added">5. The addarg() routine in the shell needed to be re-written. I added</a></li>
+<li><a href="#a-buffer-to-the-shl-array-for-the-parameters-to-go-i-m-still-not">a buffer to the Shl array for the parameters to go. I&rsquo;m still not</a></li>
+<li><a href="#sure-this-is-the-way-to-go-but-it-was-a-quick-fix-and-it-worked">sure this is the way to go, but it was a quick fix and it worked.</a></li>
+<li><a href="#6-i-added-timeout-and-untimeout-calls-to-the-kernel-the-syntax">6. I added timeout(), and untimeout() calls to the kernel. The syntax</a></li>
+<li><a href="#is-like-that-as-described-by-at-t-s-driver-design-manual">is like that as described by AT&amp;T&rsquo;s Driver Design Manual.</a></li>
+<li><a href="#7-i-modifed-the-sleep-routines-and-added-a-routine-called-sleep100-to">7. I modifed the sleep routines and added a routine called sleep100 to</a></li>
+<li><a href="#accurately-reflect-our-use-of-the-rtc">accurately reflect our use of the RTC.</a>
+<ul>
+<li><a href="#toc_19">&ndash;</a></li>
+<li><a href="#systech-johnr-systech-uucp-ucsd">Systech johnr%systech.uucp@ucsd</a></li>
+</ul></li>
+</ul>
+</nav></div>
+			
+			
+			<article class="post-content twemoji">
+				
+
+<p><img src="../img/xinu_book.jpg" alt="pic1" /></p>
+
+<hr />
+
+<p>Back in the day I ported xinu to and i960CA processor.
+This is a posting I made to comp.os.xinu describing the port.
+If you have access to Google Groups, the original post
+is here:  <a href="https://groups.google.com/g/comp.os.xinu/c/EyDuClhGFvo/m/UHYCB_CdCYkJ">xinu port to i960</a>.</p>
+
+<h1 id="the-post">The Post&nbsp;<a class="anchor" href="#the-post"><i class="small linkify icon"></i></a> </h1>
+
+<p>````markdown
+Note***</p>
+
+<p>The following message is for ch&hellip;@gestetner.oz.au (Mario Mendes) but
+in general I would be interested in discussing this with anyone.
+I attempted to mail this to chris around December 1990.</p>
+
+<p>#Chris,
+#
+#Some time ago we communicated about porting Xinu to the 960CA. I believe
+#at the time we had not yet firmly decided to go with Xinu. Well, we
+#finally made the decision to go with Xinu and I have successfully ported
+#it.
+#
+#The target environment is the EV80960CA evaluation board from Intel.
+#We used the Gnu development tools. All of the code we have developed so
+#far has been from release 1.1 of the Gnu tools. We are currently in
+#the process of upgrading to release 1.2. I have discovered an
+#alignment bug in gcc 1.2, so that has delayed our conversion.
+#
+#Anyway, the Xinu port was a little more difficult than I had imagined.
+#I had previously done a Xinu port to a 68000 based single board computer,
+#and it went really fast.
+#
+#It took longer than usual because the 960 is so damned &ldquo;weird&rdquo;. The stack
+#grows the wrong way, procedure calls are certainly different, and I had some
+#problems getting time-slicing to work.
+#
+#Currently we have Xinu configured for only a single tty device, and of
+#course we use the Real Time Clock. We have it interrupting at 200 times
+#per second, but only process every other one for an effective clock rate
+#of 100 HZ. We have the shell process working just fine. I have run all
+#of the test routines under the TEST directory that I possibly could (no
+#networking or disk-related stuff) and it all runs just fine.
+#
+#I ported from release 7.1 of the Xinu Sun source.
+#
+#Off the top of my head I&rsquo;ll list some of the modifications I made to Xinu:
+#</p>
+
+<h1 id="1-getstk-was-modified-quite-a-bit-the-idea-is-to-return-the-starting">1. getstk() was modified quite a bit. The idea is to return the starting&nbsp;<a class="anchor" href="#1-getstk-was-modified-quite-a-bit-the-idea-is-to-return-the-starting"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="address-of-the-block-instead-of-the-ending-address-just-had">address of the block instead of the ending address. Just had&nbsp;<a class="anchor" href="#address-of-the-block-instead-of-the-ending-address-just-had"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="a-thought-while-writing-this-i-wonder-if-we-even-need-getstk">a thought while writing this: I wonder if we even need getstk??&nbsp;<a class="anchor" href="#a-thought-while-writing-this-i-wonder-if-we-even-need-getstk"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="maybe-getmem-can-completely-replace-getstk">Maybe getmem() can completely replace getstk().&nbsp;<a class="anchor" href="#maybe-getmem-can-completely-replace-getstk"><i class="small linkify icon"></i></a> </h1>
+
+<p>#</p>
+
+<h1 id="2-create-had-to-be-modified-most-of-the-mods-concerned-how-the">2. create() had to be modified. Most of the mods concerned how the&nbsp;<a class="anchor" href="#2-create-had-to-be-modified-most-of-the-mods-concerned-how-the"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="stack-needed-to-be-manipulated-so-the-process-would-start-up-and">stack needed to be manipulated so the process would start up and&nbsp;<a class="anchor" href="#stack-needed-to-be-manipulated-so-the-process-would-start-up-and"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="terminate-correctly">terminate correctly.&nbsp;<a class="anchor" href="#terminate-correctly"><i class="small linkify icon"></i></a> </h1>
+
+<p>#</p>
+
+<h1 id="3-resched-was-modified-so-that-no-context-switches-are-allowed">3. resched() was modified so that NO context switches are allowed&nbsp;<a class="anchor" href="#3-resched-was-modified-so-that-no-context-switches-are-allowed"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="during-an-interrupt">during an interrupt.&nbsp;<a class="anchor" href="#during-an-interrupt"><i class="small linkify icon"></i></a> </h1>
+
+<p>#</p>
+
+<h1 id="4-i-added-a-routine-that-isr-s-may-optionally-call-that-will-cause">4. I added a routine that ISR&rsquo;s may optionally call that will cause&nbsp;<a class="anchor" href="#4-i-added-a-routine-that-isr-s-may-optionally-call-that-will-cause"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="resched-to-run-after-the-isr-has-completed-and-returned">resched() to run after the ISR has completed and returned.&nbsp;<a class="anchor" href="#resched-to-run-after-the-isr-has-completed-and-returned"><i class="small linkify icon"></i></a> </h1>
+
+<p>#</p>
+
+<h1 id="5-the-addarg-routine-in-the-shell-needed-to-be-re-written-i-added">5. The addarg() routine in the shell needed to be re-written. I added&nbsp;<a class="anchor" href="#5-the-addarg-routine-in-the-shell-needed-to-be-re-written-i-added"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="a-buffer-to-the-shl-array-for-the-parameters-to-go-i-m-still-not">a buffer to the Shl array for the parameters to go. I&rsquo;m still not&nbsp;<a class="anchor" href="#a-buffer-to-the-shl-array-for-the-parameters-to-go-i-m-still-not"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="sure-this-is-the-way-to-go-but-it-was-a-quick-fix-and-it-worked">sure this is the way to go, but it was a quick fix and it worked.&nbsp;<a class="anchor" href="#sure-this-is-the-way-to-go-but-it-was-a-quick-fix-and-it-worked"><i class="small linkify icon"></i></a> </h1>
+
+<p>#</p>
+
+<h1 id="6-i-added-timeout-and-untimeout-calls-to-the-kernel-the-syntax">6. I added timeout(), and untimeout() calls to the kernel. The syntax&nbsp;<a class="anchor" href="#6-i-added-timeout-and-untimeout-calls-to-the-kernel-the-syntax"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="is-like-that-as-described-by-at-t-s-driver-design-manual">is like that as described by AT&amp;T&rsquo;s Driver Design Manual.&nbsp;<a class="anchor" href="#is-like-that-as-described-by-at-t-s-driver-design-manual"><i class="small linkify icon"></i></a> </h1>
+
+<p>#</p>
+
+<h1 id="7-i-modifed-the-sleep-routines-and-added-a-routine-called-sleep100-to">7. I modifed the sleep routines and added a routine called sleep100 to&nbsp;<a class="anchor" href="#7-i-modifed-the-sleep-routines-and-added-a-routine-called-sleep100-to"><i class="small linkify icon"></i></a> </h1>
+
+<h1 id="accurately-reflect-our-use-of-the-rtc">accurately reflect our use of the RTC.&nbsp;<a class="anchor" href="#accurately-reflect-our-use-of-the-rtc"><i class="small linkify icon"></i></a> </h1>
+
+<p>#
+#Well, those are the major items. There&rsquo;s lots of little detail changes too.
+#
+#I&rsquo;m hoping you have some questions for me or something that could get
+#a dialog between us going. I would like to know if you modified resched()
+#like we did, and if not, how you resolved the time-slicing problem. That
+#is probably the single biggest issue that I had. I&rsquo;m satisfied with our
+#solution, but I&rsquo;d like to know how someone else resolved the problem.
+#
+#I would like to apologize for not communicating with you earlier. I wanted
+#to keep you as my &ldquo;Ace in the hole&rdquo;, and contact you if I was really stuck
+#on something. I prefer to sweat the details alone because it forces you
+#to learn the system more thoroughly.
+#
+#Hope to hear from you soon, and hope you are enjoying the Aussie summer!
+#A co-worker here at Systech who just happens to sit right next to me
+#is an Australian citizen and is currently visiting his parents in
+#Melbourne. He hadn&rsquo;t been back for about 10 years, so he was really looking
+#forward to the trip. Christmas in the summer sounds a little strange to
+#me, but then I think of that bike I got when I was about 7 years old that
+#had to stay in the garage for several months until the weather warmed up.
+#Geez, in Australia I could have had a blast on Christmas day!
+#
+#
+#John Reed
+#Sr. Software Nerd
+#
+#Systech Corp.
+#San Diego, CA
+#
+#{ucsd,uunet}!systech!johnr
+#johnr%systech.uucp@ucsd
+#
+#FAX: 619-453-0238</p>
+
+<p>Since December, we&rsquo;ve made significantly more progress. We designed our
+own 960 VME board and have ported quite a unique appication on top
+of Xinu. Our board has a 960CA at 33Mhz, 2 Megs of Ram, and an
+Intel 82596 ethernet controller. This board is a real screamer!
+And it runs Xinu! Pretty neat. ;-)</p>
+
+<p>Our application translates incoming telnet packets to Systech&rsquo;s I/O
+control blocks (IOCB&rsquo;s for short). Outgoing IOCB&rsquo;s are of course
+translated to telnet packets and sent out on the host.
+Of course this then requires a driver in the host system that understands
+these IOCB&rsquo;s. The driver presents a standard tty interface to the
+host system.</p>
+
+<p>The IOCB interface is very efficient and lumps data together in a
+&ldquo;multi-channel&rdquo; packet, which cuts down considerably interrupts to
+the host.</p>
+
+<p>We&rsquo;re able to pump almost 300,000 chars/sec through the board right
+now. That&rsquo;s a lot of telnet sessions! Pretty hot I&rsquo;d say!
+Host loading is SUBSTANTIALLY less when the telnet sessions are routed
+through our board, as opposed to the standard host ethernet controller.
+Anyway, testing continues and I think this number will increase, since
+this was the first measurement we have made.</p>
+
+<p>I must conclude by saying that we&rsquo;re hooked on Xinu. ;-&gt;
+Thanks Doug!</p>
+
+<h2 id="toc_19">&ndash;&nbsp;<a class="anchor" href="#toc_19"><i class="small linkify icon"></i></a> </h2>
+
+<p>John Reed {uunet,ucsd}!systech!johnr</p>
+
+<h2 id="systech-johnr-systech-uucp-ucsd">Systech johnr%systech.uucp@ucsd&nbsp;<a class="anchor" href="#systech-johnr-systech-uucp-ucsd"><i class="small linkify icon"></i></a> </h2>
+
+			</article>
+		</section>
+		<section class="ui secondary attached segment dream-tags">
+<a class="ui label" href="/dp/tags/github/index.html" title="github">github</a>
+
+<a class="ui label" href="/dp/tags/pic/index.html" title="pic">pic</a>
+
+<a class="ui label" href="/dp/tags/xinu/index.html" title="xinu">xinu</a>
+
+
+		</section>
+	</div>
+</div>
+
+			</div>
+			<div class="back"><nav class="ui top secondary menu bar">
+	<div class="item">
+		<i class="inverted big link bullseye icon dream-flip-toggle" title="About Me"></i>
+	</div><div class="item">
+	<a href="https://github.com/github.com/loogatee" target="_blank">
+		<i id="ico" class="inverted big link github icon" title="GitHub"></i>
+	</a>
+</div>
+<div class="item">
+	<a href="mailto:johnr@loogatee.com">
+		<i id="ico" class="inverted big link mail icon" title="Email"></i>
+	</a>
+</div>
+
+</nav>
+<div class="ui centered grid about">
+	<div class="sixteen wide mobile fifteen wide tablet fifteen wide computer column about">
+		<section class="ui stacked segments"><div class="ui inverted segment">
+	<article class="twemoji"><h1>Johnny Reed</h1>
+
+<hr />
+
+<p><br>
+Firmware guy, Linux expert, Microcontroller guru, Master of making stuff work</article>
+</div></section>
+	</div>
+</div></div>
+		</div>
+	</div><script src="/dp/js/jquery_3.3.1.min.js"></script>
+<script src="/dp/js/site.js"></script>
+<script src="/dp/js/semantic_2.3.1.min.js"></script>
+
+
+
+</body>
+
+</html>
