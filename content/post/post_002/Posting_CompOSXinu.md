@@ -23,6 +23,51 @@ This is a posting I made to comp.os.xinu describing the port.
 If you have access to Google Groups, the original post
 is here:  [xinu port to i960](https://groups.google.com/g/comp.os.xinu/c/EyDuClhGFvo/m/UHYCB_CdCYkJ).
 
+# Introduction
+
+I worked at Systech Corp in San Diego (Nancy Ridge Dr.) from 1986-1991.
+I started out in the Customer Service Dept where my primary job
+was device driver porting, and then along with that helping customers
+who wanted to do their own drivers.
+
+They were Unix device drivers, and the devices were Multibus and VMEboards
+that provided extra tty ports (/dev/ttyXX) for minicomputers of the
+day (Sun, NCR, AT&T, Unisys, etc).  Software hosted on the board offloaded
+traditional tty character processing from the host.
+
+The boards had 68000 processors on them, and ran multi-threaded code atop
+an OS named VRTX.   The key here is VRTX, and its Dollar cost to Systech.
+It was a significant line item.
+
+I'm a brash engineer there at the time, not quite 30 yrs old.
+And I had a keen interest in operating systems.
+Popular at the time were two OS's that had small cult followings:
+Minix and Xinu.  The authors of each OS had books published that
+described all the gritty details and actually provided code!
+So of course I read both books cover-to-cover!!
+
+I did the necessary research and made a proposal to management
+to ditch VRTX and go with Xinu.   This was all "gut feel"!
+I had no hardware to actually run Xinu, and the research I did
+was mostly in computing what I thought the context switch time would be.
+
+Basically what they said was "prove it".   SO I DID! And it
+was a true success story.   It worked better than any of us
+could have imagined, and it just fit a perfect nitch for hosting
+software on the boards.   Lightweight Threads, semaphores,
+messages, timers, utter simplicity.
+
+I left Systech maybe a year after doing all the Xinu stuff there.
+I took Xinu to another company named Pacific Data.
+And I heard that Systech used Xinu in their products for quite
+a few years after that, like 10 years.
+
+
+What follows here is my description of the work I did in
+porting Xinu to a new i960CA board from Systech.
+
+
+
 
 # Xinu on the i960CA
 

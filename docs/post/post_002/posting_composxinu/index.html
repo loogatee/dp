@@ -22,7 +22,7 @@ Posting comp.os.xinu
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta name="author" content="John Reed" />
 	<meta name="description" content="Back in the day I ported xinu to an i960CA processor. This is a posting I made to comp.os.xinu describing the port. If you have access to Google Groups, the original post is here: xinu port to i960.
-Xinu on the i960CA Note*** The following message is for ch...@gestetner.oz.au (Mario Mendes) but in general I would be interested in discussing this with anyone. I attempted to mail this to chris around December 1990." />
+Introduction I worked at Systech Corp in San Diego (Nancy Ridge Dr.) from 1986-1991. I started out in the Customer Service Dept where my primary job was device driver porting, and then along with that helping customers who wanted to do their own drivers." />
 <meta name="generator" content="Hugo 0.40.2" />
 
 <link rel="shortcut icon" href="img/defaultFav.ico">
@@ -239,11 +239,12 @@ var bodyBgSwitchIndex = 0;
 			</h1>
 			<div class="sub header">
 					<div><span><i class="calendar outline icon"></i>Apr 20, 2022</span></div>
-					<div><span><i class="clock outline icon"></i>5 min read</span></div>
+					<div><span><i class="clock outline icon"></i>7 min read</span></div>
 					<div><span><i class="angle double up icon"></i>Last updated on Apr 20, 2022</span></div>
 			</div>
 			<hr><div class="toc"><nav id="TableOfContents">
 <ul>
+<li><a href="#introduction">Introduction</a></li>
 <li><a href="#xinu-on-the-i960ca">Xinu on the i960CA</a></li>
 </ul>
 </nav></div>
@@ -261,6 +262,48 @@ This is a posting I made to comp.os.xinu describing the port.
 <br>
 If you have access to Google Groups, the original post
 is here:  <a href="https://groups.google.com/g/comp.os.xinu/c/EyDuClhGFvo/m/UHYCB_CdCYkJ">xinu port to i960</a>.</p>
+
+<h1 id="introduction">Introduction&nbsp;<a class="anchor" href="#introduction"><i class="small linkify icon"></i></a> </h1>
+
+<p>I worked at Systech Corp in San Diego (Nancy Ridge Dr.) from 1986-1991.
+I started out in the Customer Service Dept where my primary job
+was device driver porting, and then along with that helping customers
+who wanted to do their own drivers.</p>
+
+<p>They were Unix device drivers, and the devices were Multibus and VMEboards
+that provided extra tty ports (/dev/ttyXX) for minicomputers of the
+day (Sun, NCR, AT&amp;T, Unisys, etc).  Software hosted on the board offloaded
+traditional tty character processing from the host.</p>
+
+<p>The boards had 68000 processors on them, and ran multi-threaded code atop
+an OS named VRTX.   The key here is VRTX, and its Dollar cost to Systech.
+It was a significant line item.</p>
+
+<p>I&rsquo;m a brash engineer there at the time, not quite 30 yrs old.
+And I had a keen interest in operating systems.
+Popular at the time were two OS&rsquo;s that had small cult followings:
+Minix and Xinu.  The authors of each OS had books published that
+described all the gritty details and actually provided code!
+So of course I read both books cover-to-cover!!</p>
+
+<p>I did the necessary research and made a proposal to management
+to ditch VRTX and go with Xinu.   This was all &ldquo;gut feel&rdquo;!
+I had no hardware to actually run Xinu, and the research I did
+was mostly in computing what I thought the context switch time would be.</p>
+
+<p>Basically what they said was &ldquo;prove it&rdquo;.   SO I DID! And it
+was a true success story.   It worked better than any of us
+could have imagined, and it just fit a perfect nitch for hosting
+software on the boards.   Lightweight Threads, semaphores,
+messages, timers, utter simplicity.</p>
+
+<p>I left Systech maybe a year after doing all the Xinu stuff there.
+I took Xinu to another company named Pacific Data.
+And I heard that Systech used Xinu in their products for quite
+a few years after that, like 10 years.</p>
+
+<p>What follows here is my description of the work I did in
+porting Xinu to a new i960CA board from Systech.</p>
 
 <h1 id="xinu-on-the-i960ca">Xinu on the i960CA&nbsp;<a class="anchor" href="#xinu-on-the-i960ca"><i class="small linkify icon"></i></a> </h1>
 
