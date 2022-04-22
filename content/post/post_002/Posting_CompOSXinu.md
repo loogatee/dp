@@ -204,3 +204,26 @@ John Reed {uunet,ucsd}!systech!johnr
 Systech johnr%systech.uucp@ucsd
 --------------------------------------------------------------
 ```
+
+# More of my comp.os.xinu postings
+
+Some of these old posts are real treasures!
+
+One of them has all the code (poorly formatted) for Xinu-based
+line printer daemon (lpd).
+
+If you have access to Google Groups:
+
+ &nbsp; [https://groups.google.com/g/comp.os.xinu/search?q=Reed]
+(https://groups.google.com/g/comp.os.xinu/search?q=Reed)
+
+
+
+
+
+
+
+
+
+
+
